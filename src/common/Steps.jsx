@@ -20,7 +20,8 @@ const calcPoints = (vertical, marks, dots, step, min, max) => {
 const Steps = ({ prefixCls, vertical, marks, dots, step, included,
                 lowerBound, upperBound, max, min, dotStyle, activeDotStyle }) => {
   const range = max - min;
-  const elements = calcPoints(vertical, marks, dots, step, min, max).map((point) => {
+  //marks as empty array to avoid dots at labels.
+  const elements = calcPoints(vertical, [], dots, step, min, max).map((point) => {
     const offset = `${Math.abs(point - min) / range * 100}%`;
 
     const isActived = (!included && point === upperBound) ||

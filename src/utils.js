@@ -15,12 +15,19 @@ export function isNotTouchEvent(e) {
     (e.type.toLowerCase() === 'touchend' && e.touches.length > 0);
 }
 
-export function getClosestPoint(val, { marks, step, min }) {
-  const points = Object.keys(marks).map(parseFloat);
+export function getClosestPoint(val, { marks, step, min, max }) {
+
+ console.log("val ", val);
+  //marks as empty array to avoid stop at labels.
+  const points = Object.keys([]).map(parseFloat);
   if (step !== null) {
     const closestStep =
             Math.round((val - min) / step) * step + min;
-    points.push(closestStep);
+    if(closestStep > max) {
+      points.push(max);
+    } else {
+      points.push(closestStep);
+    }
   }
   const diffs = points.map(point => Math.abs(val - point));
   return points[diffs.indexOf(Math.min(...diffs))];
