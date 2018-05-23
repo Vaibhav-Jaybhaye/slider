@@ -16,8 +16,6 @@ export function isNotTouchEvent(e) {
 }
 
 export function getClosestPoint(val, { marks, step, min, max }) {
-
- console.log("val ", val);
   //marks as empty array to avoid stop at labels.
   const points = Object.keys([]).map(parseFloat);
   if (step !== null) {

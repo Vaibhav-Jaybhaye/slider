@@ -145,7 +145,6 @@ class PureRenderRange extends React.Component {
     };
   }
   handleChange = (value) => {
-    console.log(value);
     this.setState({
       foo: !this.state.foo,
     });
